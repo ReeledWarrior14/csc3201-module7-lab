@@ -111,4 +111,5 @@ if img_type == "image":
     img.save("recovered_laptop.png", format="PNG")
 
 # Run the extractor on stego_text.png with a wrong password and show that the STEG check fails and it reports no payload, rather than returning garbage.
+print("\nWrong Password Test:")
 print(extract("stego_text.png", "wrong_password")[1])
