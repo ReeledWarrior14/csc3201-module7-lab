@@ -78,7 +78,7 @@ def embed(cover_path, out_path, type, payload_bytes, password):
 
     # print(perm)
     
-    for i in range(0, len(bits) - 1):
+    for i in range(0, len(bits)):
         channel_pos = perm[i] # which channel to use
         pixel = channel_pos // 3 # map flat index -> pixel + channel
         ch = channel_pos % 3
@@ -90,7 +90,7 @@ def embed(cover_path, out_path, type, payload_bytes, password):
     out_image.save(out_path, format='PNG')
 
 # stego_text.png -> hide the text "This is a secret" in apple_logo_cover.png.
-embed("apple_logo_cover.png", "stego_text.png", "text", b"This is a secret", "123")
+embed("apple_logo_cover.png", "stego_text.png", "text", b"This is a secret", "secret")
 
 
 # stego_laptop.png -> hide laptop_secret.png in apple_logo_cover.png.
@@ -103,5 +103,5 @@ buffer = BytesIO()
 secret_image.save(buffer, format="PNG")
 payload_bytes = buffer.getvalue()
 
-embed("apple_logo_cover.png", "stego_laptop.png", "image", payload_bytes, "123")
+embed("apple_logo_cover.png", "stego_laptop.png", "image", payload_bytes, "secret")
 

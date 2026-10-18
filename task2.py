@@ -62,7 +62,7 @@ def extract(stego_path, password):
 
     # print(perm)
     
-    for i in range(0, total - 1):
+    for i in range(total):
         channel_pos = perm[i]
         pixel = channel_pos//3
         ch = channel_pos%3
@@ -97,11 +97,11 @@ def extract(stego_path, password):
 
 
 # Recover and print the text from stego_text.png (expect "This is a secret").
-print(extract("stego_text.png", "123")[1])
+print(extract("stego_text.png", "secret")[1])
 
 # Recover the image from stego_laptop.png and display it (expect the laptop).
-# extract("stego_laptop.png", "123")
-img_type, img_bytes = extract("stego_laptop.png", "123")
+# extract("stego_laptop.png", "secret")
+img_type, img_bytes = extract("stego_laptop.png", "secret")
 if img_type == "image":
     # load the image from bytes and display it
     img = Image.open(BytesIO(img_bytes))
